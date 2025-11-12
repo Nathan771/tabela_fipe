@@ -43,4 +43,30 @@ def plot_depreciacao_por_ano(df: pd.DataFrame, marca_modelo: str, modelo_regress
         label='Linha de Regressão'
         )
 
-        
+    plt.title(f"Depreciação de preços - {marca_modelo} ao Longo dos Anos", fontsize = 16)
+    plt.xlabel('Ano do Modelo', fontsize = 12)
+    plt.ylabel('Valor FIPE (R$)', fontsize = 12)
+    plt.grid(True, linestyle = '--', alpha = 0.6)
+    plt.legend()
+    plt.gca().ticklabel_format(style = 'plain', axis = 'y')
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == '__main__':
+    print("Módulo 'visual.py' testando plotagem.")
+
+    data = {
+        'Modelo': ['Polo', 'Polo', 'Polo', 'Polo', 'Polo'],
+        'Ano_Modelo': [2020, 2018, 2015, 2012, 2010],
+        'Valor_FIPE_Limpo': [80000.0, 70000.0, 55000.0, 40000.0, 30000.0],
+        'Idade_Carro': [5, 7, 10, 13, 15] 
+    }
+    df_exemplo = pd.DataFrame(data)
+
+    from sklearn.linear_model import LinearRegression
+    modelo_dummy = LinearRegression()
+    modelo_dummy.coef_ = [-5000]
+    modelo_dummy.intercept_ = 100000
+
+    plot_depreciacao_por_ano(df_exemplo, "Polo(Exemplo)", modelo_dummy)
+    
