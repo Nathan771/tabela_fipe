@@ -2,7 +2,7 @@ import requests
 import time
 import pandas as pd
 
-BASE_URL = "https://parallelum.com.br/fipe/api/v1/carros"
+BASE_URL = "https://parallelum.com.br/fipe/api/v1/carros" # /marcas/59/modelos/5940/anos
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
@@ -19,10 +19,12 @@ def _fazer_requisicao(endpoint: str):
         print(f" Erro ao acessar {url}: {e}")
         return None
 
-def requisicao_e_loop_de_precos(codigo_marca: str, codigo_modelo: str): 
-    dados_finais = [] 
+def requisicao_e_loop_de_precos(codigo_marca: str, codigo_modelo: str): #-> Função criada definida com dois parâmetros de entrada pra receber apenas string.
+    
+    dados_finais = []
     
     endpoint_lista = f"marcas/{codigo_marca}/modelos/{codigo_modelo}/anos" 
+    anos_versao = _fazer_requisicao(endpoint_lista) 
     
     if not isinstance(anos_versao, list) or not anos_versao: 
         return None

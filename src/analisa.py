@@ -45,7 +45,7 @@ def treinar_modelo_depreciacao(df_features: pd.DataFrame) -> Optional[LinearRegr
 
 if __name__ == '__main__':
 
-    print("Módulo 'analisa.py' testando engenharia de feautes e treinamento de modelo.")
+    print("Módulo 'analisa.py' testando engenharia de features e treinamento de modelo.")
 
 
     data = {
@@ -64,5 +64,3 @@ if __name__ == '__main__':
         modelo_treinado = treinar_modelo_depreciacao(df_com_features)
         if modelo_treinado:
             print(f"\n Modelo treinado: {modelo_treinado}")
-
-    
